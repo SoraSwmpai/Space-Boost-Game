@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class CollisionHandler : MonoBehaviour
                 Debug.Log("Not exists");
                 break;
             default:
-                Debug.Log("You Crashed Dummy");
+                ReloadLevel();
                 break;
         }
-
-        
-
+        void ReloadLevel()
+        {
+            int currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
+        }
     }
 }
